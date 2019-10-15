@@ -20,22 +20,11 @@ const sequelize = new Sequelize(
     }
 );
 
-
-sequelize   // 연결 테스트 
-    .authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
-
-
 const db = {};
 
 fs.readdirSync(__dirname + "/models")
   .filter(function(file) {
-    return file.indexOf(".") !== 0 && file !== "index.js" && file != "DAO";
+    return file.indexOf(".") !== 0 && file !== "index.js" && file != "dao";
   })
   .forEach(function(file) {
     const model = sequelize["import"](path.join(__dirname, "models", file));
@@ -47,6 +36,15 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
+
+sequelize   // 연결 테스트 
+  .sync()
+  .then(() => {
+      console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+      console.error('Unable to connect to the database:', err);
+  });
 
 db.sequelize = sequelize;
 
