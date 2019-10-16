@@ -1,5 +1,4 @@
-const { room,Sequelize } = require("../index");
-const Op = Sequelize.Op;
+const { room }  = require("../models/index.js");
 
 class Room {
     create(obj) {
@@ -10,7 +9,9 @@ class Room {
             img : obj.img,
             price : obj.price,
             review : obj.review,
-            capacity : obj.capacity
+            capacity : obj.capacity,
+            option : obj.option.join(''),
+            info : obj.info.join('')
         })
         .then()
         .catch(err => console.log(err));
@@ -20,9 +21,9 @@ class Room {
         return room.findAll({
             where: {
                 price: {
-                    [Op.and]: {
-                        [Op.gte]: lowestPrice,
-                        [Op.lte]: highestPrice
+                    $and: {
+                        $gte: lowestPrice,
+                        $lte: highestPrice
                       }
                 }
             }
@@ -32,13 +33,31 @@ class Room {
         .catch(err => console.log(err));
     }
 
+    findRoomsByCapacity(guest) {
+        return room.findAll({
+            where: {
+                capacity: {
+                    $gte : guest
+                }
+            }
+        })
+        .map(data => data.get({ plain: true }))
+        .then()
+        .catch(err => console.log(err));
+    }
+
+    findRoomsByDate(checkIn,checkOut) {
+        return room.findAll({
+            where: {
+                
+            }
+        })
+        .map(data => data.get({ plain: true }))
+        .then()
+        .catch(err => console.log(err));
+    }
+
 
 }
-// (async() => {
-//     const a = new Room();
-//     let data = await a.findRoomsByPrice(50000,70000);
-//     console.log(data);
-
-// })()
 
 module.exports = Room;

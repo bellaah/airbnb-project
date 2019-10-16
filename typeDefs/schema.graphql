@@ -1,32 +1,33 @@
 type Query {
-    name(name:String): String
+    filterByPrice ( lowestPrice:Int!, highestPrice:Int! ) : [Room] 
+    filterByCapacity ( guest:Int! ) : [Room]
 }
 
 type Mutation {
-    addRoom(
-        data: RoomInput
-    ): Boolean
-    filterByPrice(lowestPrice:Int, highestPrice:Int): [Room] 
+    addRoom ( data: RoomInput ) : Boolean
 }
 
 input RoomInput {
-    title:String,
-    hostID:String,
-    star:Int,
-    img:String,
-    price:Int,
-    review:Int,
-    capacity:Int
+    title: String!,
+    hostID: String,
+    star: Float,
+    img: String!,
+    price: Int!,
+    review: Int,
+    capacity: Int,
+    option: [String],
+    info: [String]
 }
 
-
 type Room {
-    id:Int,
-    title:String,
-    hostID:String,
-    star:Int,
-    img:String,
-    price:Int,
-    review:Int,
-    capacity:Int
+    id: Int,
+    title: String,
+    hostID: String,
+    star: Float,
+    img: String,
+    price: Int,
+    review: Int,
+    capacity: Int,
+    option: String,
+    info: String
 }

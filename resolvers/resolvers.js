@@ -3,15 +3,17 @@ const room = new Room();
 
 const resolvers = {
     Query: {
-        name: (_,{name}) => name
+        filterByPrice: (_,{lowestPrice,highestPrice}) => {
+            return room.findRoomsByPrice(lowestPrice,highestPrice);
+        },
+
+        filterByCapacity: (_,{guest}) => {
+            return room.findRoomsByCapacity(guest);
+        }
     },
     Mutation: {
         addRoom: (_,obj) => {
-            console.log(obj);
             room.create(obj);
-        },
-        filterByPrice: async(_,{lowestPrice,highestPrice}) => {
-            return room.findRoomsByPrice(lowestPrice,highestPrice);
         }
     }
 };

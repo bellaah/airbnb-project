@@ -30,6 +30,12 @@ module.exports = function(sequelize, dataTypes) {
             },
             review: {
                 type: dataTypes.INTEGER
+            },
+            option: {
+                type: dataTypes.STRING
+            },
+            info: {
+                type: dataTypes.STRING
             }
         },
         {

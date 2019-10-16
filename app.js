@@ -1,6 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga';
 import resolvers from './resolvers/resolvers';
-const { sequelize } = require('./database/index.js');
+const { sequelize } = require('./database/models/index.js');
 
 
 const server = new GraphQLServer({
