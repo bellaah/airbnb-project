@@ -36,15 +36,12 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-sequelize 
-  .sync()
-  .then(() => {
-      console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-      console.error('Unable to connect to the database:', err);
-  });
-
 db.sequelize = sequelize;
 
-module.exports = db;
+module.exports = { 
+  Sequelize : Sequelize,
+  sequelize : sequelize,
+  user : db.user,
+  room : db.room,
+  reservation : db.reservation
+ };

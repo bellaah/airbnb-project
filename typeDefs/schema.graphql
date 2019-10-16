@@ -1,15 +1,32 @@
 type Query {
-    name (name:String) : String!
+    name(name:String): String
 }
 
 type Mutation {
-    addRoom (
-        title:String,
-        hostID:String,
-        star:Int,
-        img:String,
-        price:Int,
-        review:Int,
-        capacity:Int
-    ) : Boolean
+    addRoom(
+        data: RoomInput
+    ): Boolean
+    filterByPrice(lowestPrice:Int, highestPrice:Int): [Room] 
+}
+
+input RoomInput {
+    title:String,
+    hostID:String,
+    star:Int,
+    img:String,
+    price:Int,
+    review:Int,
+    capacity:Int
+}
+
+
+type Room {
+    id:Int,
+    title:String,
+    hostID:String,
+    star:Int,
+    img:String,
+    price:Int,
+    review:Int,
+    capacity:Int
 }
