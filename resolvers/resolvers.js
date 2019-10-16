@@ -9,11 +9,16 @@ const resolvers = {
 
         filterByCapacity: (_,{guest}) => {
             return room.findRoomsByCapacity(guest);
+        },
+
+        // 날짜는 "2019.10.16"과 같은 형태의 String으로 받는다.
+        filterByDate: (_,{checkIn,checkOut}) => {
+            return room.findRoomsByDate(checkIn,checkOut);
         }
     },
     Mutation: {
-        addRoom: (_,obj) => {
-            room.create(obj);
+        addRoom: (_,{data}) => {
+            room.create(data);
         }
     }
 };
