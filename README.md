@@ -1,2 +1,5 @@
-# 멤버십 프로젝트 - 에어비엔비 저장소
+# WEEK7 AirBnB
 
+## ERD
+
+![](https://i.imgur.com/T5gf0Es.png)

@@ -1,4 +1,4 @@
-const { reservation } = require("../index");
+const { reservation } = require("../index.js");
 
 class Reservation {
 

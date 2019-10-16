@@ -9,10 +9,10 @@ class Room {
             img : obj.img,
             price : obj.price,
             review : obj.review,
-            capacity : obj.capacity,
-        });
+            capacity : obj.capacity
+        }).then().catch(err => console.log(err));
     }
-    
+
 }
 
 module.exports = Room;

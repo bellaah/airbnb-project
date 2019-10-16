@@ -14,8 +14,7 @@ const sequelize = new Sequelize(
         dialect : 'mysql',
         pool: {
             max: 5,
-            min: 0,
-            idel: 10000
+            min: 0
         }
     }
 );
@@ -23,10 +22,10 @@ const sequelize = new Sequelize(
 const db = {};
 
 fs.readdirSync(__dirname + "/models")
-  .filter(function(file) {
-    return file.indexOf(".") !== 0 && file !== "index.js" && file != "dao";
+  .filter(file => {
+    return file.indexOf(".") !== 0 && file !== "index.js";
   })
-  .forEach(function(file) {
+  .forEach(file => {
     const model = sequelize["import"](path.join(__dirname, "models", file));
     db[model.name] = model;
   });
@@ -37,7 +36,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-sequelize   // 연결 테스트 
+sequelize 
   .sync()
   .then(() => {
       console.log('Connection has been established successfully.');
