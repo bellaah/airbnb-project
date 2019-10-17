@@ -1,4 +1,4 @@
-const { user } = require("../models/index.js");
+const { user,Sequelize } = require("../models/index.js");
 
 class User {
 

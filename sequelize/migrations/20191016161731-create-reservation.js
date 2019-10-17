@@ -15,6 +15,14 @@ module.exports = {
         roomID: {
             type: Sequelize.INTEGER,
             allowNull: false
+        },
+        checkIn: {
+          type: DataTypes.DATEONLY,
+          allowNull: false
+        },
+        checkOut: {
+          type: DataTypes.DATEONLY,
+          allowNull: false
         }
       },
       {

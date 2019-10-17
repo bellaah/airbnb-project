@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
           primaryKey: true
         },
         hostID: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         img: {
@@ -37,6 +37,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         info: {
+            type: DataTypes.STRING
+        },
+        type: {
             type: DataTypes.STRING
         }
       },

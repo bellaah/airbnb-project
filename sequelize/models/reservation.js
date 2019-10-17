@@ -8,11 +8,19 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true
       },
       guestID: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       roomID: {
         type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      checkIn: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+      },
+      checkOut: {
+        type: DataTypes.DATEONLY,
         allowNull: false
       }
     },

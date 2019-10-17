@@ -39,6 +39,9 @@ module.exports = {
         },
         info: {
             type: Sequelize.STRING
+        },
+        type: {
+            type: Sequelize.STRING
         }
       },
       {
@@ -46,6 +49,7 @@ module.exports = {
       }
     );
   },
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('rooms');
   }

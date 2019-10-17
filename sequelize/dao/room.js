@@ -1,28 +1,26 @@
-const { room }  = require("../models/index.js");
+const { room,Sequelize }  = require("../models/index.js");
+const Op = Sequelize.Op;
 
 class Room {
     create(obj) {
         obj.option = obj.option.join(' ');
         obj.info = obj.info.join(' ');
 
-        return room.create(obj)
-        .then()
-        .catch(err => console.log(err));
+        return room.create(obj).catch(err => console.log(err));
     }
 
     findRoomsByPrice(lowestPrice,highestPrice) {
         return room.findAll({
             where: {
                 price: {
-                    $and: {
-                        $gte: lowestPrice,
-                        $lte: highestPrice
+                    [Op.and]: {
+                        [Op.gte]: lowestPrice,
+                        [Op.lte]: highestPrice
                       }
                 }
             }
         })
         .map(data => data.get({ plain: true }))
-        .then()
         .catch(err => console.log(err));
     }
 
@@ -30,12 +28,11 @@ class Room {
         return room.findAll({
             where: {
                 capacity: {
-                    $gte : guest
+                    [Op.gte] : guest
                 }
             }
         })
         .map(data => data.get({ plain: true }))
-        .then()
         .catch(err => console.log(err));
     }
 
@@ -47,18 +44,8 @@ class Room {
             }
         })
         .map(data => data.get({ plain: true }))
-        .then()
         .catch(err => console.log(err));
     }
-
-    changeStringToDate(str) {
-        const yyyy = end_ymd.substr(0,4);
-        const mm = end_ymd.substr(5,2);
-        const dd = end_ymd.substr(8,2);                        
-        
-        return new Date(yyyy, mm-1, dd);
-    }
-
 
 }
 
