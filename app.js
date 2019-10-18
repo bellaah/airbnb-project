@@ -1,10 +1,10 @@
-import { GraphQLServer } from 'graphql-yoga';
-import resolvers from './resolvers/resolvers';
-const { sequelize } = require('./database/models/index.js');
-
+import { GraphQLServer,express } from 'graphql-yoga';
+import resolvers from './resolvers/resolver.js';
+import { sequelize } from './sequelize/models/index.js';
+import user from './sequelize/dao/user.js'
 
 const server = new GraphQLServer({
-    typeDefs : "typeDefs/schema.graphql",
+    typeDefs: "typeDefs/schema.graphql",
     resolvers
 })
 
@@ -17,5 +17,7 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
+
+    
 server.start(() => console.log("GraphQL Server Start!"));
 

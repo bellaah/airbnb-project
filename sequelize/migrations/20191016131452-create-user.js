@@ -10,10 +10,16 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING
+      },
+      email: {
+        type: DataTypes.STRING
+      },
+      password: {
+        type: DataTypes.STRING
       }
     });
   },
-  
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('users');
   }

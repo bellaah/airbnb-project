@@ -10,7 +10,7 @@ module.exports = {
         },
         hostID: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
         },
         img: {
             type: Sequelize.STRING,

@@ -2,9 +2,11 @@
   "dependencies": {
     "dotenv": "^8.1.0",
     "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.7.0",
     "nodemon": "^1.19.3",
-    "sequelize": "^5.19.6"
+    "sequelize": "^5.19.6",
+    "sequelize-cli": "^5.5.1"
   },
   "scripts": {
     "start": "nodemon --exec babel-node app.js"

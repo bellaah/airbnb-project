@@ -6,7 +6,12 @@ class Room {
         obj.option = obj.option.join(' ');
         obj.info = obj.info.join(' ');
 
-        return room.create(obj).catch(err => console.log(err));
+        return room.create(obj)
+            .then(res => true)
+            .catch(err => {
+                console.log(err);
+                return false;
+            });
     }
 
     findRoomsByPrice(lowestPrice,highestPrice) {
@@ -19,8 +24,7 @@ class Room {
                       }
                 }
             }
-        })
-        .map(data => data.get({ plain: true }))
+        }).map(data => data.get({ plain: true }))
         .catch(err => console.log(err));
     }
 
@@ -31,20 +35,24 @@ class Room {
                     [Op.gte] : guest
                 }
             }
-        })
-        .map(data => data.get({ plain: true }))
+        }).map(data => data.get({ plain: true }))
         .catch(err => console.log(err));
     }
 
     findRoomsByDate(checkIn,checkOut) {     //미완성
-        
-        return room.findAll({
+        const reservedRoom = room.findAll({
+            attributes: ['roomID'],
             where: {
-                
+                [Op.and]:{
+                    checkIn:{  
+                        [Op.lte] : new Date(checkOut)
+                    },
+                    checkOut: {
+                        [Op.gt] : new Date(checkIn)
+                    }
+                }
             }
-        })
-        .map(data => data.get({ plain: true }))
-        .catch(err => console.log(err));
+        });
     }
 
 }

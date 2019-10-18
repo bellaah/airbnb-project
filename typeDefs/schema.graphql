@@ -1,11 +1,16 @@
 type Query {
-    filterByPrice ( lowestPrice:Int!, highestPrice:Int! ) : [Room] 
+    filterByPrice ( lowestPrice:Int!, highestPrice:Int! ): [Room] 
     filterByCapacity ( guest:Int! ) : [Room]
-    filterByDate ( checkIn:String!, checkOut:String! ) : [Room] 
+    filterByDate ( checkIn:String!, checkOut:String! ): [Room] 
 }
 
 type Mutation {
-    addRoom ( data: RoomInput ) : Boolean
+    addRoom ( data:RoomInput ) : Boolean
+    reserveRoom ( roomID:Int, guestID:Int, checkIn:String, checkOut:String ) : Boolean
+    cancelReservation ( roomID:Int, guestID:Int ) : Boolean
+    signUp ( email:String!, name:String, password:String ) : Boolean
+    login ( email:String, password:String ) : Boolean
+    checkToken ( token:String ) : String
 }
 
 input RoomInput {
