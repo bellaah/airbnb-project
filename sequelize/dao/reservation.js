@@ -32,6 +32,24 @@ class Reservation {
             });
     }
 
+    async findReservedRoom(checkIn,checkOut) {
+        const reservedIdList = await reservation.findAll({
+            attributes: ['roomID'],
+            where: {
+                [Op.and]:{
+                    checkIn:{  
+                        [Op.lt] : new Date(checkOut)
+                    },
+                    checkOut: {
+                        [Op.gt] : new Date(checkIn)
+                    }
+                }
+            }
+        })
+        .map(data => data.get({ plain: true }))
+        .catch(err => console.log(err));
+        return  reservedIdList.map(item => item.roomID);
+    }
 
 }
 

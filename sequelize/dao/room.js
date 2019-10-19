@@ -15,7 +15,7 @@ class Room {
     }
 
     findRoomsByPrice(lowestPrice,highestPrice) {
-        return room.findAll({
+        const condition = {
             where: {
                 price: {
                     [Op.and]: {
@@ -24,35 +24,35 @@ class Room {
                       }
                 }
             }
-        }).map(data => data.get({ plain: true }))
-        .catch(err => console.log(err));
+        };
+        return this.findAll(condition);
     }
 
     findRoomsByCapacity(guest) {
-        return room.findAll({
+        const condition =  {
             where: {
                 capacity: {
                     [Op.gte] : guest
                 }
             }
-        }).map(data => data.get({ plain: true }))
-        .catch(err => console.log(err));
+        };
+        return this.findAll(condition);
     }
 
-    findRoomsByDate(checkIn,checkOut) {     //미완성
-        const reservedRoom = room.findAll({
-            attributes: ['roomID'],
-            where: {
-                [Op.and]:{
-                    checkIn:{  
-                        [Op.lte] : new Date(checkOut)
-                    },
-                    checkOut: {
-                        [Op.gt] : new Date(checkIn)
-                    }
-                }
+    findRoomsByDate(reservedRoom) {  
+        return room.findAll({
+            where: { 
+                id: { 
+                    [Op.notIn]: reservedRoom
+                } 
             }
         });
+    }
+
+    findAll(condition) {
+        return room.findAll(condition)
+            .map(data => data.get({ plain: true }))
+            .catch(err => console.log(err));
     }
 
 }

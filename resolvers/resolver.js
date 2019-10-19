@@ -17,8 +17,9 @@ const resolvers = {
         },
 
         // 날짜는 "2019.10.16"과 같은 형태의 String으로 받는다.
-        filterByDate: (_,{checkIn,checkOut}) => {
-            return room.findRoomsByDate(checkIn,checkOut);
+        filterByDate: async(_,{checkIn,checkOut}) => {
+            const reservedIdList = await reservation.findReservedRoom(checkIn,checkOut);
+            return room.findRoomsByDate(reservedIdList);
         }
     },
     Mutation: {
