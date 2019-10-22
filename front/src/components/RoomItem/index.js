@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Style from './index.scss';
 import Star from './star.js';
 
-const roomItem = ({ room }) => {
+const RoomItem = ({ room }) => {
 	return (
-		<div className="Room" key={room.id}>
+		<div className="Room">
 			<img src={room.img}></img>
 			<div className="Room-description">
 				<p>{room.type}</p>
@@ -21,4 +21,4 @@ const roomItem = ({ room }) => {
 	);
 };
 
-export default roomItem;
+export default RoomItem;

@@ -12,10 +12,10 @@ const RoomList = () => {
 	if (error) return <p>Error!(</p>;
 
 	const makeRoomItem = data =>
-		data.map(item => <RoomItem room={item}></RoomItem>);
+		data.map(item => <RoomItem room={item} key={item.id}></RoomItem>);
 	return (
 		<div className="Room-list">
-			<h2>숙소{data.getAllRooms.length}개</h2>
+			<h2 className="Header-text">숙소{data.getAllRooms.length}개</h2>
 			{makeRoomItem(data.getAllRooms)}
 		</div>
 	);
