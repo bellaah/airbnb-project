@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import RoomList from './containers/RoomList/index';
 import Modal from './components/Modal/index';
-import FilterButton from './components/FilterButton/index';
+import FilterBar from './containers/FilterBar/index';
 import style from './App.scss';
 
 const client = new ApolloClient({
@@ -19,7 +19,7 @@ function App() {
 	return (
 		<ApolloProvider client={client}>
 			<div className="App-main">
-				<FilterButton />
+				<FilterBar />
 				<RoomList />
 			</div>
 		</ApolloProvider>

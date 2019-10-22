@@ -8,6 +8,10 @@ const user = new User();
 
 const resolvers = {
 	Query: {
+		getAllRooms: () => {
+			return room.getAllRooms();
+		},
+
 		filterByPrice: (_, { lowestPrice, highestPrice }) => {
 			return room.findRoomsByPrice(lowestPrice, highestPrice);
 		},

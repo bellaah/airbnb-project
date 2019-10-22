@@ -6,15 +6,20 @@ $airbnb-main-color: #ff5a5f;
 	flex-direction: $direction;
 }
 
+@mixin set-width-height($w, $h) {
+	height: $h;
+	width: $w;
+}
+
 .Room {
 	display: flex;
 	border: 1px solid $border-gray-color;
 	border-radius: 0.3rem;
 	padding: 0.5rem;
-	margin: 1rem 0;
+	margin: 1rem 0.5rem;
 
 	img {
-		width: 18rem;
+		@include set-width-height(18rem, 13rem);
 		border-radius: 0.3rem;
 	}
 

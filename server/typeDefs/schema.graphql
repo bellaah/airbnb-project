@@ -1,4 +1,5 @@
 type Query {
+	getAllRooms: [Room]
 	filterByPrice(lowestPrice: Int!, highestPrice: Int!): [Room]
 	filterByCapacity(guest: Int!): [Room]
 	filterByDate(checkIn: String!, checkOut: String!): [Room]
