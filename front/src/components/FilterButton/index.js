@@ -13,7 +13,7 @@ const FilterButton = ({ name, click, select, id }) => {
 
 		&:hover {
 			background-color: ${select == id ? '#006C70' : '#ebebeb'};
-			color: ${select == id ? 'white' : 'black'};
+			color: ${select == id ? 'white' : '#484848'};
 		}
 	`;
 	return <ButtonStyle onClick={click}>{name}</ButtonStyle>;

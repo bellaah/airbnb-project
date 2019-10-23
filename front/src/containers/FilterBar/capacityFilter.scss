@@ -1,0 +1,14 @@
+.Guest-div {
+	width: 20rem;
+	.Guest-name {
+		margin: 2rem;
+	}
+	.Guest-set-div {
+		.Increase-button,
+		.Decrease-button {
+			padding: 0.5rem 0.8rem;
+			border: 1px solid #008489;
+			border-radius: 50%;
+		}
+	}
+}
