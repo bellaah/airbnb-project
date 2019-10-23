@@ -1,0 +1,12 @@
+.Modal {
+	position: absolute;
+	margin: 0.5rem 0.2rem;
+	.Modal-div {
+		width: 10rem;
+		height: 10rem;
+		background-color: white;
+		box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 0.2rem;
+	}
+}

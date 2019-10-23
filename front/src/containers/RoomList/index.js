@@ -3,20 +3,23 @@ import { useQuery } from '@apollo/react-hooks';
 
 import RoomItem from '../../components/RoomItem/index';
 import { GET_ALL_ROOMS } from './query';
-import style from './style.scss';
+import './index.scss';
 
 const RoomList = () => {
 	const { loading, error, data } = useQuery(GET_ALL_ROOMS);
+	let allRooms;
 
 	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error!(</p>;
+	if (error) {
+		return <p>Error!</p>;
+	} else allRooms = data.getAllRooms;
 
-	const makeRoomItem = data =>
-		data.map(item => <RoomItem room={item} key={item.id}></RoomItem>);
+	const makeRoomItem = rooms =>
+		rooms.map(item => <RoomItem room={item} key={item.id} />);
 	return (
 		<div className="Room-list">
-			<h2 className="Header-text">숙소{data.getAllRooms.length}개</h2>
-			{makeRoomItem(data.getAllRooms)}
+			<h2 className="Header-text">숙소{allRooms.length}개</h2>
+			{makeRoomItem(allRooms)}
 		</div>
 	);
 };

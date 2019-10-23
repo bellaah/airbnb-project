@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import style from './index.scss';
+import './index.scss';
 
-const FilterButton = ({ name }) => {
-	return <button className="Filter-btn">{name}</button>;
+const FilterButton = ({ name, click }) => {
+	return (
+		<button className="Filter-btn" onClick={click}>
+			{name}
+		</button>
+	);
 };
 
 export default FilterButton;

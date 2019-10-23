@@ -1,27 +1,27 @@
-import { GraphQLServer,express } from 'graphql-yoga';
+import { GraphQLServer, express } from 'graphql-yoga';
 import resolvers from './resolvers/resolver.js';
 import { sequelize } from './sequelize/models/index.js';
 
 const server = new GraphQLServer({
-    typeDefs: "typeDefs/schema.graphql",
-    resolvers
-})
+	typeDefs: 'typeDefs/schema.graphql',
+	resolvers,
+});
 
 const graphqlServerOptions = {
-    endpoint: '/graphql',
-}
+	endpoint: '/graphql',
+	cors: {
+		credentials: true,
+		origin: ['http://localhost:3000'],
+	},
+};
 
 sequelize
-    .sync()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
+	.sync()
+	.then(() => {
+		console.log('Connection has been established successfully.');
+	})
+	.catch(err => {
+		console.error('Unable to connect to the database:', err);
+	});
 
-    
-server.start(graphqlServerOptions,() => 
-    console.log("GraphQL Server Start!"
-));
-
+server.start(graphqlServerOptions, () => console.log('GraphQL Server Start!'));

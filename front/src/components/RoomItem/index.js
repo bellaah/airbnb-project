@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import Style from './index.scss';
 import Star from './star.js';
+import './index.scss';
 
 const RoomItem = ({ room }) => {
+	const { img, type, title, info, option, star, review } = room;
+
 	return (
 		<div className="Room">
-			<img src={room.img}></img>
+			<img src={img}></img>
 			<div className="Room-description">
-				<p>{room.type}</p>
-				<h3>{room.title}</h3>
-				<p>{room.info}</p>
-				<p>{room.option}</p>
+				<p>{type}</p>
+				<h3>{title}</h3>
+				<p>{info}</p>
+				<p>{option}</p>
 				<div className="Star-and-review">
-					<Star>{room.star}</Star>
-					<p>{room.review}</p>
+					<Star>{star}</Star>
+					<p>{review}</p>
 					<button className="Reservation-btn">예약</button>
 				</div>
 			</div>

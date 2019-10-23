@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './star.scss';
 import styled from 'styled-components';
+import './star.scss';
 
 const StarRate = props => {
 	const rate = (props.children / 5) * 100;
