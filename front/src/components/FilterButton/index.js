@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-export default ({ name, click, select, id }) => {
+export default ({ text, click, select, id }) => {
 	const ButtonStyle = styled.button`
 		border: 1px solid #ebebeb;
 		border-radius: 0.3rem;
@@ -16,5 +16,5 @@ export default ({ name, click, select, id }) => {
 			color: ${select === id ? 'white' : '#484848'};
 		}
 	`;
-	return <ButtonStyle onClick={click}>{name.text}</ButtonStyle>;
+	return <ButtonStyle onClick={click}>{text.text}</ButtonStyle>;
 };

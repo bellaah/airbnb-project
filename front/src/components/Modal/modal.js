@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { RoomsContext } from '../../containers/Main/index';
 import './modal.scss';
 import styled from 'styled-components';
 
-export default ({ body, buttonText }) => {
+export default ({ body, buttonText, setModal }) => {
 	const roomsContext = useContext(RoomsContext);
 	const BackDivStyle = styled.div`
 		background-color: white;
@@ -15,7 +15,13 @@ export default ({ body, buttonText }) => {
 	`;
 
 	const getRoomsByFilter = () => {
-		console.log(buttonText);
+		setModal(null);
+		if (buttonText.query) {
+			roomsContext.setFilter({
+				query: buttonText.query,
+				params: buttonText.params,
+			});
+		}
 	};
 
 	return (

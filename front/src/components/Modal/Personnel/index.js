@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
+import { FILTER_BY_CAPACITY } from '../../../containers/Main/query';
 
 //RoomsConsumer.setFilter는 { query: GET_ALL_ROOMS, arguments: {} } <이런 방식으로 parameter를 줘야한다.
 export default ({ setText }) => {
@@ -9,7 +10,7 @@ export default ({ setText }) => {
 
 	useEffect(() => {
 		setButtonText();
-	});
+	}, [adult, child, baby]);
 
 	const personnel = [
 		{ name: '성인', count: adult, setCount: setAdult },
@@ -32,7 +33,11 @@ export default ({ setText }) => {
 			const text = `게스트${adult + child}명${
 				baby === 0 ? '' : `,유아${baby}명`
 			}`;
-			setText({ text, params: { guest: adult + child } });
+			setText({
+				text,
+				params: { guest: adult + child },
+				query: FILTER_BY_CAPACITY,
+			});
 		}
 	};
 

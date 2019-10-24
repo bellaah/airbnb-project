@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Star from './star.js';
 import './index.scss';
 

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const GET_ALL_ROOMS = () => gql`
+const GET_ALL_ROOMS = gql`
 	query {
 		getAllRooms {
 			id
@@ -17,9 +17,9 @@ const GET_ALL_ROOMS = () => gql`
 	}
 `;
 
-const FILTER_BY_DATE = (checkIn, checkOut) => gql`
-	query {
-		filterByDate(checkIn: checkIn, checkOut: checkOut) {
+const FILTER_BY_DATE = gql`
+	query FilterByDate($checkIn: String!, $checkOut: String!) {
+		filterByDate(checkIn: $checkIn, checkOut: $checkOut) {
 			id
 			title
 			hostID
@@ -34,9 +34,9 @@ const FILTER_BY_DATE = (checkIn, checkOut) => gql`
 	}
 `;
 
-const FILTER_BY_CAPACITY = guest => gql`
-	query {
-		filterByCapacity(guest: guest) {
+const FILTER_BY_CAPACITY = gql`
+	query FilterByCapacity($guest: Int!) {
+		filterByCapacity(guest: $guest) {
 			id
 			title
 			hostID
@@ -51,9 +51,9 @@ const FILTER_BY_CAPACITY = guest => gql`
 	}
 `;
 
-const FILTER_BY_PRICE = (lowestPrice, highestPrice) => gql`
-	query {
-		filterByPrice(lowestPrice: lowestPrice, highestPrice: highestPrice) {
+const FILTER_BY_PRICE = ({ lowestPrice, highestPrice }) => gql`
+	query FilterByPrice($lowestPrice: Int!, $highestPrice: Int!) {
+		filterByPrice(lowestPrice: $lowestPrice, highestPrice: $highestPrice) {
 			id
 			title
 			hostID

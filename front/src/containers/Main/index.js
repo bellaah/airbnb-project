@@ -3,26 +3,30 @@ import { useQuery } from '@apollo/react-hooks';
 
 import RoomList from '../RoomList/index';
 import FilterBar from '../FilterBar/index';
-import {
-	GET_ALL_ROOMS,
-	FILTER_BY_DATE,
-	FILTER_BY_CAPACITY,
-	FILTER_BY_PRICE,
-} from './query';
+import { GET_ALL_ROOMS } from './query';
 
 const RoomsContext = createContext();
 
 const Main = () => {
-	const [filter, setFilter] = useState({ query: GET_ALL_ROOMS, args: {} });
-
-	const { loading, error, data } = useQuery(filter.query(filter.args));
+	const [filter, setFilter] = useState({
+		query: GET_ALL_ROOMS,
+		params: {},
+	});
+	const { loading, error, data } = useQuery(filter.query, {
+		variables: filter.params,
+	});
 	let allRooms;
 
 	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error!</p>;
-	else allRooms = data.getAllRooms;
+	if (error) {
+		console.log(error);
+		return <p>Error!</p>;
+	} else {
+		for (let key in data) {
+			allRooms = data[key];
+		}
+	}
 
-	//setFilter를 넘겨줘서 query를 바꿀수 있게 한다.
 	return (
 		<RoomsContext.Provider className="Main" value={{ setFilter }}>
 			<FilterBar />

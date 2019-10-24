@@ -8,19 +8,12 @@ import './index.scss';
 export default () => {
 	const [dateButtonText, setDateButtonText] = useState({
 		text: '날짜',
-		params: { checkIn: '', checkOut: '' },
 	});
 	const [capacityButtonText, setCapacityButtonText] = useState({
 		text: '인원',
-		params: { guest: 0 },
-	});
-	const [typeButtonText, setTypeButtonText] = useState({
-		text: '숙소유형',
-		params: {},
 	});
 	const [priceButtonText, setPriceButtonText] = useState({
 		text: '가격',
-		params: { lowestPrice: '', highestPrice: '' },
 	});
 	const [selectNum, setSelected] = useState(null);
 
@@ -36,14 +29,9 @@ export default () => {
 			modalBody: <Personnel setText={setCapacityButtonText} />,
 		},
 		{
-			buttonText: typeButtonText,
-			setText: setTypeButtonText,
-			modalBody: <p>h</p>,
-		},
-		{
 			buttonText: priceButtonText,
 			setText: setPriceButtonText,
-			modalBody: <p>h</p>,
+			modalBody: <p></p>,
 		},
 	];
 
@@ -57,15 +45,19 @@ export default () => {
 
 	const FilterButtonComponent = () =>
 		buttonAndModalBody.map(({ buttonText, modalBody }, index) => (
-			<div className="Button-and-modal">
+			<div className="Button-and-modal" key={index}>
 				<FilterButton
-					name={buttonText}
+					text={buttonText}
 					click={selectUpdate(index)}
 					select={selectNum}
 					id={index}
 				/>
 				{selectNum === index ? (
-					<Modal body={modalBody} buttonText={buttonText} />
+					<Modal
+						body={modalBody}
+						buttonText={buttonText}
+						setModal={setSelected}
+					/>
 				) : (
 					''
 				)}
