@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import { DayPickerRangeController, isInclusivelyBeforeDay } from 'react-dates';
+import { FILTER_BY_DATE } from '../../../containers/Main/query';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import './index.scss';
-import { FILTER_BY_DATE } from '../../../containers/Main/query';
 
 // props.ButtonText = '날짜' > 캘린더에서 날짜를 선택할 때 마다 버튼안의 ButtonText를 바꾼다.
 export default class Calendar extends React.Component {

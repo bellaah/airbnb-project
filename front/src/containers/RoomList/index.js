@@ -4,8 +4,7 @@ import RoomItem from '../../components/RoomItem/index';
 import './index.scss';
 
 export default ({ rooms }) => {
-	const makeRoomItem = rooms =>
-		rooms.map(item => <RoomItem room={item} key={item.id} />);
+	const makeRoomItem = rooms => rooms.map(item => <RoomItem room={item} key={item.id} />);
 
 	return (
 		<div className="Room-list">

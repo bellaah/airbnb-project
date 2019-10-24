@@ -1,1 +1,1 @@
-![](./airbnb_gif.gif)
+![](./airbnb_demo.gif)

@@ -14,9 +14,7 @@ const Main = () => {
 		query: GET_ALL_ROOMS,
 		params: {},
 	});
-	const { loading, error, data } = useQuery(filter.query, {
-		variables: filter.params,
-	});
+	const { loading, error, data } = useQuery(filter.query, { variables: filter.params });
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error!</p>;

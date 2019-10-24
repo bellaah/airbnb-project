@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './index.scss';
 import { FILTER_BY_CAPACITY } from '../../../containers/Main/query';
+import './index.scss';
 
-//RoomsConsumer.setFilter는 { query: GET_ALL_ROOMS, arguments: {} } <이런 방식으로 parameter를 줘야한다.
 export default ({ setText }) => {
 	const [adult, setAdult] = useState(0);
 	const [child, setChild] = useState(0);

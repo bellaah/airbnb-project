@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 
-import FilterButton from '../../components/FilterButton/index';
 import { Modal, Calendar, Personnel } from '../../components/Modal/index';
+import FilterButton from '../../components/FilterButton/index';
 import Header from '../../components/Header/index';
 import './index.scss';
 
 export default () => {
-	const [dateButtonText, setDateButtonText] = useState({
-		text: '날짜',
-	});
-	const [capacityButtonText, setCapacityButtonText] = useState({
-		text: '인원',
-	});
-	const [priceButtonText, setPriceButtonText] = useState({
-		text: '가격',
-	});
+	const [dateButtonText, setDateButtonText] = useState({ text: '날짜' });
+	const [capacityButtonText, setCapacityButtonText] = useState({ text: '인원' });
+	const [priceButtonText, setPriceButtonText] = useState({ text: '가격' });
 	const [selectNum, setSelected] = useState(null);
 
 	const buttonAndModalBody = [
@@ -46,18 +40,9 @@ export default () => {
 	const FilterButtonComponent = () =>
 		buttonAndModalBody.map(({ buttonText, modalBody }, index) => (
 			<div className="Button-and-modal" key={index}>
-				<FilterButton
-					text={buttonText}
-					click={selectUpdate(index)}
-					select={selectNum}
-					id={index}
-				/>
+				<FilterButton text={buttonText} click={selectUpdate(index)} select={selectNum} id={index} />
 				{selectNum === index ? (
-					<Modal
-						body={modalBody}
-						buttonText={buttonText}
-						setModal={setSelected}
-					/>
+					<Modal body={modalBody} buttonText={buttonText} setModal={setSelected} />
 				) : (
 					''
 				)}
