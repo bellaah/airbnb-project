@@ -3,6 +3,7 @@ import moment from 'moment';
 import { DayPickerRangeController, isInclusivelyBeforeDay } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
+import './dateFilter.scss';
 
 // props.ButtonText = '날짜' > 캘린더에서 날짜를 선택할 때 마다 버튼안의 ButtonText를 바꾼다.
 export default class Calendar extends React.Component {
@@ -27,6 +28,7 @@ export default class Calendar extends React.Component {
 			<DayPickerRangeController
 				startDate={this.state.startDate}
 				endDate={this.state.endDate}
+				hideKeyboardShortcutsPanel={true}
 				onDatesChange={({ startDate, endDate }) => {
 					this.setState({ startDate, endDate });
 					this.setButtonText(startDate, endDate);

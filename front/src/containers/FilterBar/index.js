@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 import FilterButton from '../../components/FilterButton/index';
 import Modal from '../../components/Modal/index';
+import Header from '../../components/Header/index';
 import './index.scss';
-import Calendar from './dateFilter';
-import Capacity from './capacityFilter';
+import Calendar from '../../components/Modal/Calendar/dateFilter';
+import Capacity from '../../components/Modal/Personnel/capacityFilter';
 
 const FilterBar = () => {
 	const [dateButtonText, setDateButtonText] = useState('날짜');
@@ -65,7 +66,12 @@ const FilterBar = () => {
 		}
 	};
 
-	return <div className="Filter-bar">{FilterButtonComponent()}</div>;
+	return (
+		<div className="Header">
+			<Header />
+			<div className="Filter-bar">{FilterButtonComponent()}</div>
+		</div>
+	);
 };
 
 export default FilterBar;

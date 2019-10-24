@@ -13,9 +13,14 @@ const Modal = ({ body }) => {
 	`;
 
 	return (
-		<div className="Modal">
-			<div className="Modal-div">{body}</div>
-			{/* <BackDivStyle /> */}
+		<div>
+			<div className="Modal">
+				<div className="Modal-div">
+					{body}
+					<button className="Save-button">저장</button>
+				</div>
+			</div>
+			<BackDivStyle />
 		</div>
 	);
 };
