@@ -28,6 +28,9 @@ export default ({ body, buttonText, setModal }) => {
 		<div>
 			<div className="Modal">
 				<div className="Modal-div">
+					<button className="Cancel-button" onClick={getRoomsByFilter}>
+						X
+					</button>
 					{body}
 					<button className="Save-button" onClick={getRoomsByFilter}>
 						저장
