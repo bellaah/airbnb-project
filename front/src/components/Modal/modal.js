@@ -1,18 +1,9 @@
 import React, { useContext } from 'react';
 import { RoomsContext } from '../../containers/Main/index';
 import './modal.scss';
-import styled from 'styled-components';
 
 export default ({ body, buttonText, setModal }) => {
 	const roomsContext = useContext(RoomsContext);
-	const BackDivStyle = styled.div`
-		background-color: white;
-		width: 100rem;
-		height: 100rem;
-		opacity: 0.7;
-		position: fixed;
-		left: 0;
-	`;
 
 	const getRoomsByFilter = () => {
 		setModal(null);
@@ -37,7 +28,7 @@ export default ({ body, buttonText, setModal }) => {
 					</button>
 				</div>
 			</div>
-			<BackDivStyle />
+			<div className="Back-div" />
 		</div>
 	);
 };

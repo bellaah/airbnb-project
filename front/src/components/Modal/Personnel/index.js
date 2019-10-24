@@ -30,9 +30,8 @@ export default ({ setText }) => {
 	const setButtonText = () => {
 		if (adult + child + baby === 0) setText({ text: '인원' });
 		else {
-			const text = `게스트${adult + child}명${
-				baby === 0 ? '' : `,유아${baby}명`
-			}`;
+			const text = `게스트${adult + child}명 
+					${baby === 0 ? '' : `,유아${baby}명`}`;
 			setText({
 				text,
 				params: { guest: adult + child },

@@ -8,6 +8,8 @@ import { GET_ALL_ROOMS } from './query';
 const RoomsContext = createContext();
 
 const Main = () => {
+	let allRooms;
+
 	const [filter, setFilter] = useState({
 		query: GET_ALL_ROOMS,
 		params: {},
@@ -15,13 +17,10 @@ const Main = () => {
 	const { loading, error, data } = useQuery(filter.query, {
 		variables: filter.params,
 	});
-	let allRooms;
 
 	if (loading) return <p>Loading...</p>;
-	if (error) {
-		console.log(error);
-		return <p>Error!</p>;
-	} else {
+	if (error) return <p>Error!</p>;
+	else {
 		for (let key in data) {
 			allRooms = data[key];
 		}
