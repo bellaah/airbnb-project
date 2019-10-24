@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import FilterButton from '../../components/FilterButton/index';
 import Modal from '../../components/Modal/index';
 import Header from '../../components/Header/index';
-import './index.scss';
 import Calendar from '../../components/Modal/Calendar/dateFilter';
 import Capacity from '../../components/Modal/Personnel/capacityFilter';
+import './index.scss';
 
 const FilterBar = () => {
 	const [dateButtonText, setDateButtonText] = useState('날짜');
@@ -67,7 +67,7 @@ const FilterBar = () => {
 	};
 
 	return (
-		<div className="Header">
+		<div className="Header-div">
 			<Header />
 			<div className="Filter-bar">{FilterButtonComponent()}</div>
 		</div>
