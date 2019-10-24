@@ -7,16 +7,45 @@ import Calendar from './dateFilter';
 import Capacity from './capacityFilter';
 
 const FilterBar = () => {
+	const [dateButtonText, setDateButtonText] = useState('날짜');
+	const [capacityButtonText, setCapacityButtonText] = useState('인원');
+	const [typeButtonText, setTypeButtonText] = useState('숙소유형');
+	const [priceButtonText, setPriceButtonText] = useState('가격');
+
 	const buttonAndModalBody = [
-		{ buttonName: '날짜', modalBody: <Calendar /> },
-		{ buttonName: '인원', modalBody: <Capacity name="인원" /> },
-		{ buttonName: '숙소유형', modalBody: <p>h</p> },
-		{ buttonName: '가격', modalBody: <p>h</p> },
+		{
+			buttonName: dateButtonText,
+			setText: setDateButtonText,
+			modalBody: (
+				<Calendar ButtonText={dateButtonText} setText={setDateButtonText} />
+			),
+		},
+		{
+			buttonName: capacityButtonText,
+			setText: setCapacityButtonText,
+			modalBody: (
+				<Capacity
+					ButtonText={capacityButtonText}
+					setText={setCapacityButtonText}
+				/>
+			),
+		},
+		{
+			buttonName: typeButtonText,
+			setText: setTypeButtonText,
+			modalBody: <p>h</p>,
+		},
+		{
+			buttonName: priceButtonText,
+			setText: setPriceButtonText,
+			modalBody: <p>h</p>,
+		},
 	];
+
 	const [selectNum, setSelected] = useState(null);
 
-	const makeFilterButton = () =>
-		buttonAndModalBody.map(({ buttonName, modalBody }, index) => (
+	const FilterButtonComponent = () =>
+		buttonAndModalBody.map(({ buttonName, modalBody, setText }, index) => (
 			<div className="Button-and-modal">
 				<FilterButton
 					name={buttonName}
@@ -36,7 +65,7 @@ const FilterBar = () => {
 		}
 	};
 
-	return <div className="Filter-bar">{makeFilterButton()}</div>;
+	return <div className="Filter-bar">{FilterButtonComponent()}</div>;
 };
 
 export default FilterBar;

@@ -1,9 +1,16 @@
 .Guest-div {
 	width: 20rem;
+	display: flex;
+	justify-content: space-between;
+	margin: 1rem;
 	.Guest-name {
-		margin: 2rem;
+		margin: 0 1rem;
+		align-self: center;
 	}
 	.Guest-set-div {
+		span {
+			margin: 0 1rem;
+		}
 		.Increase-button,
 		.Decrease-button {
 			padding: 0.5rem 0.8rem;
