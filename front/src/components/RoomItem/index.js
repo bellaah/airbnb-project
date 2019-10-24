@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Star from './star.js';
 import './index.scss';
 
-const RoomItem = ({ room }) => {
+export default ({ room }) => {
 	const { img, type, title, info, option, star, review } = room;
 
 	return (
@@ -22,5 +22,3 @@ const RoomItem = ({ room }) => {
 		</div>
 	);
 };
-
-export default RoomItem;

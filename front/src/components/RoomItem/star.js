@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import './star.scss';
 
-const StarRate = props => {
+export default props => {
 	const rate = (props.children / 5) * 100;
 
 	const StarStyle = styled.div`
@@ -11,5 +11,3 @@ const StarRate = props => {
 
 	return <StarStyle className="Star-rate">★★★★★</StarStyle>;
 };
-
-export default StarRate;

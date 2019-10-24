@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-export default function Header() {
+export default () => {
 	return (
 		<div className="Header">
 			<svg
@@ -16,4 +16,4 @@ export default function Header() {
 			<p className="Header-text">Bellabnb</p>
 		</div>
 	);
-}
+};

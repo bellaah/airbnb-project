@@ -1,62 +1,51 @@
 import React, { useState } from 'react';
 
 import FilterButton from '../../components/FilterButton/index';
-import Modal from '../../components/Modal/index';
+import { Modal, Calendar, Personnel } from '../../components/Modal/index';
 import Header from '../../components/Header/index';
-import Calendar from '../../components/Modal/Calendar/dateFilter';
-import Capacity from '../../components/Modal/Personnel/capacityFilter';
 import './index.scss';
 
-const FilterBar = () => {
-	const [dateButtonText, setDateButtonText] = useState('날짜');
-	const [capacityButtonText, setCapacityButtonText] = useState('인원');
-	const [typeButtonText, setTypeButtonText] = useState('숙소유형');
-	const [priceButtonText, setPriceButtonText] = useState('가격');
+export default () => {
+	const [dateButtonText, setDateButtonText] = useState({
+		text: '날짜',
+		params: { checkIn: '', checkOut: '' },
+	});
+	const [capacityButtonText, setCapacityButtonText] = useState({
+		text: '인원',
+		params: { guest: 0 },
+	});
+	const [typeButtonText, setTypeButtonText] = useState({
+		text: '숙소유형',
+		params: {},
+	});
+	const [priceButtonText, setPriceButtonText] = useState({
+		text: '가격',
+		params: { lowestPrice: '', highestPrice: '' },
+	});
+	const [selectNum, setSelected] = useState(null);
 
 	const buttonAndModalBody = [
 		{
-			buttonName: dateButtonText,
+			buttonText: dateButtonText,
 			setText: setDateButtonText,
-			modalBody: (
-				<Calendar ButtonText={dateButtonText} setText={setDateButtonText} />
-			),
+			modalBody: <Calendar setText={setDateButtonText} />,
 		},
 		{
-			buttonName: capacityButtonText,
+			buttonText: capacityButtonText,
 			setText: setCapacityButtonText,
-			modalBody: (
-				<Capacity
-					ButtonText={capacityButtonText}
-					setText={setCapacityButtonText}
-				/>
-			),
+			modalBody: <Personnel setText={setCapacityButtonText} />,
 		},
 		{
-			buttonName: typeButtonText,
+			buttonText: typeButtonText,
 			setText: setTypeButtonText,
 			modalBody: <p>h</p>,
 		},
 		{
-			buttonName: priceButtonText,
+			buttonText: priceButtonText,
 			setText: setPriceButtonText,
 			modalBody: <p>h</p>,
 		},
 	];
-
-	const [selectNum, setSelected] = useState(null);
-
-	const FilterButtonComponent = () =>
-		buttonAndModalBody.map(({ buttonName, modalBody, setText }, index) => (
-			<div className="Button-and-modal">
-				<FilterButton
-					name={buttonName}
-					click={selectUpdate(index)}
-					select={selectNum}
-					id={index}
-				/>
-				{selectNum === index ? <Modal body={modalBody} /> : ''}
-			</div>
-		));
 
 	const selectUpdate = id => () => {
 		if (selectNum === id) {
@@ -66,6 +55,23 @@ const FilterBar = () => {
 		}
 	};
 
+	const FilterButtonComponent = () =>
+		buttonAndModalBody.map(({ buttonText, modalBody }, index) => (
+			<div className="Button-and-modal">
+				<FilterButton
+					name={buttonText}
+					click={selectUpdate(index)}
+					select={selectNum}
+					id={index}
+				/>
+				{selectNum === index ? (
+					<Modal body={modalBody} buttonText={buttonText} />
+				) : (
+					''
+				)}
+			</div>
+		));
+
 	return (
 		<div className="Header-div">
 			<Header />
@@ -73,5 +79,3 @@ const FilterBar = () => {
 		</div>
 	);
 };
-
-export default FilterBar;
