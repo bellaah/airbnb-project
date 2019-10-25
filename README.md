@@ -14,12 +14,6 @@
 
 ### 🏠 [Homepage](-)
 
-## Install
-
-```sh
-npm install
-```
-
 ## Author
 
 👤 **bella**
